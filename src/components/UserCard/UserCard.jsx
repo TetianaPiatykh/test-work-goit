@@ -14,6 +14,15 @@ const UserCard = () => {
     
 };
 
+const visibleFolowers = () => {
+    const string = followers.toString();
+    const length = followers.toString().length;
+
+    const newString =
+      string.slice(0, length - 3) + ',' + string.slice(length - 3, length);
+    return newString;
+  };
+
     return (
         <UserCardStyled>
             <LogoStyled/>
@@ -26,7 +35,7 @@ const UserCard = () => {
                 
             </CenterStyledDiv>
             <TweetStyled>777 Tweets</TweetStyled>
-            <FollowerStyled>{followers} Followers</FollowerStyled>
+            <FollowerStyled>{visibleFolowers()} Followers</FollowerStyled>
             <Button follow={follow} onClick={() => {
                 setFollow(!follow);
                 updateFollowers();
